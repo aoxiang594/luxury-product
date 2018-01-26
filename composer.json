@@ -13,6 +13,7 @@
             "email": "mail@aoxiang.me"
         }
     ],
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "luxury\\": "src/"
