@@ -1,0 +1,22 @@
+{
+    "name": "aoxiang/luxury-product",
+    "description": "Luxury Product List",
+    "type": "library",
+    "require": {
+        "rmccue/requests": ">=1.7",
+        "php": ">=5.4.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aoxiang",
+            "email": "mail@aoxiang.me"
+        }
+    ],
+    "minimum-stability": "beta",
+    "autoload": {
+        "psr-4": {
+            "luxury\\": "src/"
+        }
+    }
+}
