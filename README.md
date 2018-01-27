@@ -518,4 +518,73 @@ $client->searchProductByModel("L12",1);
 
 返回参数及参数说明参考<a href="#getTopAttribute">获取顶级属性列表</a>
 #### <a name="getProduct">获取某个产品的详细信息</a>
+```php
+$client->searchProductByModel($model, $page);//型号名称，页码
+$client->searchProductByModel("L12",1);
+```
+```json
+{
+    "code": "200",
+    "errorNo": "",
+    "error": "",
+    "errorInfo": [],
+    "data": {
+        "product_id": "49729",
+        "category_id": "1",
+        "title": "依波时代元素50280216",
+        "brand_id": "956",
+        "series_id": "972",
+        "model_id": "48205",
+        "brand_name": "依波",
+        "series_name": "时代元素MODERN ELEMENTS",
+        "model_name": "50280216",
+        "public_price": "1480.00",
+        "photo": "http://productimg.xbiao.com/91/240_360/4813314703776156.gif",
+        "add_time": "2017-11-30 16:34:12",
+        "attribute_list": [
+            {
+                "product_attribute_id": "1178292",
+                "product_id": "49729",
+                "attribute_id": "7",
+                "mark": "jixinleixing",
+                "attribute_name": "机芯类型",
+                "attribute_value": "230,230",
+                "attribute_value_name": "石英,石英",
+                "attribute_type": "select",
+                "parent_id": "0"
+            }
+        ]
+    }
+}
+```
+参数说明
+
+
+|键|类型|说明|
+|:-------|:-------|:-------|
+| product_id | string| 产品id |
+| category_id | string| 分类ID|
+| title | string| 标题 |
+| brand_id | string| 产品品牌 |
+| series_id | string|产品系列 |
+| model_id | string| 产品型号 |
+| brand_name | string| 品牌名称 |
+| series_name | string| 系列名称|
+| model_name | string|型号名称 |
+| public_price | string| 公价|
+| photo | string| 产品图片|
+| attribute_list | string| 属性列表|
+
+属性列表中参数说明
+|参数名|类型|说明|
+|:-------|:-------|:-------|
+| product_attribute_id | string| 产品属性值id |
+| product_id | string| 产品ID|
+| attribute_id | string| 属性ID|
+| mark | string| 标识 |
+| attribute_name | string| 属性名称 |
+| attribute_value | string| 属性值id，如果是多选，这里是个数组|
+| attribute_value_name | string| 属性值名称 |
+| attribute_type | string| 属性类型|
+| parent_id | string|父级属性id |
 
