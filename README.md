@@ -576,7 +576,8 @@ $client->searchProductByModel("L12",1);
 | attribute_list | string| 属性列表|
 
 属性列表中参数说明
-|参数名|类型|说明|
+
+|键|类型|说明|
 |:-------|:-------|:-------|
 | product_attribute_id | string| 产品属性值id |
 | product_id | string| 产品ID|
