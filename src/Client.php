@@ -28,7 +28,7 @@ class Client
             'getModelList'         => "/index/brand/getModelByBrandId",
             'searchBrandByName'    => "/index/brand/searchByName",
             'getTopAttribute'      => "/index/attribute/getTopAttributeByCategoryId",
-            'getChildrenAttribute' => "/index/attribute/getChildrenAttribute",
+            'getChildAttribute'    => "/index/attribute/getChildAttribute",
             'searchProductByModel' => "/index/product/searchProductByModel",
             'getProduct'           => "/index/product/getProductById",
         );
@@ -69,8 +69,10 @@ class Client
                 return false;
             }
         } else {
-            $this->error   = "请求失败";
-            $this->errorNo = "request_fail";
+            $this->error     = "请求失败";
+            $this->errorNo   = "request_fail";
+            $this->errorInfo = $response->body;
+            var_dump($this->errorInfo);
             return false;
         }
 
@@ -202,9 +204,9 @@ class Client
      * getChildrenAttribute 获取子属性
      * @param int $attributeId
      */
-    public function getChildrenAttribute($attributeId = 0)
+    public function getChildAttribute($attributeId = 0)
     {
-        $response = $this->request->get($this->domain . $this->urlList['getChildrenAttribute'] . "/attribute_id/" . $attributeId, $this->headers);
+        $response = $this->request->get($this->domain . $this->urlList['getChildAttribute'] . "/attribute_id/" . $attributeId, $this->headers);
         return $this->buildData($response);
     }
 
