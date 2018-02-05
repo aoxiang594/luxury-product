@@ -25,7 +25,8 @@ class Client
             'getChildCategory'     => "/index/category/getChildCategory",
             'getBrandList'         => "/index/brand/getBrandByCategoryId",
             'getSeriesList'        => "/index/brand/getSeriesByBrandId",
-            'getModelList'         => "/index/brand/getModelByBrandId",
+            'getModelList'         => "/index/brand/getModelBySeriesId",
+            'getModelByBrandId'    => "/index/brand/getModelByBrandId",
             'searchBrandByName'    => "/index/brand/searchByName",
             'getTopAttribute'      => "/index/attribute/getTopAttributeByCategoryId",
             'getChildAttribute'    => "/index/attribute/getChildAttribute",
@@ -133,6 +134,17 @@ class Client
     public function getModelList($seriesId = 0)
     {
         $response = $this->request->get($this->domain . $this->urlList['getModelList'] . "/series_id/" . $seriesId, $this->headers);
+        return $this->buildData($response);
+    }
+
+    /**
+     * getModelListByBrandId 获取某个品牌下的型号列表
+     * @param int $brandId
+     * @return bool|mixed
+     */
+    public function getModelListByBrandId($brandId = 0)
+    {
+        $response = $this->request->get($this->domain . $this->urlList['getModelByBrandId'] . "/brand_id/" . $brandId, $this->headers);
         return $this->buildData($response);
     }
 

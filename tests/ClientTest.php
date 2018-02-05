@@ -9,7 +9,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function __construct()
     {
-        $this->client = new luxury\Client('http://127.0.0.1:8089');
+        $this->client = new Client('http://127.0.0.1:8089');
     }
 
     public function startTest()
@@ -19,6 +19,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->testGetBrandList();
         $this->testGetSeriesList();
         $this->testGetModelList();
+        $this->testGetModelListByBrandId();
         $this->testSearchBrand();
         $this->testSearchSeries();
         $this->testSearchModel();
@@ -30,7 +31,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $data = $this->client->getTopCategory();
 
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
     }
@@ -40,7 +41,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $data = $this->client->getChildCategory('1');
 
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
     }
@@ -49,7 +50,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $data = $this->client->getBrandList('1');
 
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
     }
@@ -58,7 +59,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $data = $this->client->getSeriesList('1');
 
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
     }
@@ -66,17 +67,24 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testGetModelList()
     {
         $data = $this->client->getModelList('9');
-
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
+    }
+
+    public function testGetModelListByBrandId()
+    {
+        $data = $this->client->getModelListByBrandId('1');
+
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
+        $this->assertTrue(empty($this->client->error));
     }
 
     public function testSearchBrand()
     {
         $data = $this->client->searchBrand('劳');
 
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
     }
@@ -85,7 +93,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $data = $this->client->searchSeries('HAUTE');
 
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
     }
@@ -94,7 +102,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $data = $this->client->searchModel('26564RC');
 
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
     }
@@ -104,7 +112,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $data = $this->client->getTopAttribute('1');
 
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
     }
@@ -113,7 +121,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $data = $this->client->getChildAttribute('1');
 
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
     }
 
@@ -121,7 +129,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $data = $this->client->searchProductByModel('26564RC');
 
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
     }
@@ -130,7 +138,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $data = $this->client->getProduct('1');
 
-        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error.",errorNo:".$this->client->errorNo);
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
     }
