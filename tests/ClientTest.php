@@ -9,7 +9,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function __construct()
     {
-        $this->client = new Client('http://127.0.0.1:8089');
+        $this->client = new luxury\Client('http://127.0.0.1:8089');
     }
 
     public function startTest()
@@ -67,6 +67,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testGetModelList()
     {
         $data = $this->client->getModelList('9');
+
         $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
 
@@ -78,6 +79,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));
+
     }
 
     public function testSearchBrand()

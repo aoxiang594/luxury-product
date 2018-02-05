@@ -21,17 +21,17 @@ class Client
         Requests::register_autoloader();
         $this->request = new \Requests_Session();
         $this->urlList = array(
-            'getTopCategory'       => "/index/category/getTopCategory",
-            'getChildCategory'     => "/index/category/getChildCategory",
-            'getBrandList'         => "/index/brand/getBrandByCategoryId",
-            'getSeriesList'        => "/index/brand/getSeriesByBrandId",
-            'getModelList'         => "/index/brand/getModelBySeriesId",
-            'getModelByBrandId'    => "/index/brand/getModelByBrandId",
-            'searchBrandByName'    => "/index/brand/searchByName",
-            'getTopAttribute'      => "/index/attribute/getTopAttributeByCategoryId",
-            'getChildAttribute'    => "/index/attribute/getChildAttribute",
-            'searchProductByModel' => "/index/product/searchProductByModel",
-            'getProduct'           => "/index/product/getProductById",
+            'getTopCategory'        => "/index/category/getTopCategory",
+            'getChildCategory'      => "/index/category/getChildCategory",
+            'getBrandList'          => "/index/brand/getBrandByCategoryId",
+            'getSeriesList'         => "/index/brand/getSeriesByBrandId",
+            'getModelList'          => "/index/brand/getModelBySeriesId",
+            'getModelListByBrandId' => "/index/brand/getModelListByBrandId",
+            'searchBrandByName'     => "/index/brand/searchByName",
+            'getTopAttribute'       => "/index/attribute/getTopAttributeByCategoryId",
+            'getChildAttribute'     => "/index/attribute/getChildAttribute",
+            'searchProductByModel'  => "/index/product/searchProductByModel",
+            'getProduct'            => "/index/product/getProductById",
         );
         $this->headers = array(
             "Content-Type" => "application/json",
@@ -138,13 +138,13 @@ class Client
     }
 
     /**
-     * getModelListByBrandId 获取某个品牌下的型号列表
-     * @param int $brandId
+     * getModelList 获取型号
+     * @param int $seriesId
      * @return bool|mixed
      */
     public function getModelListByBrandId($brandId = 0)
     {
-        $response = $this->request->get($this->domain . $this->urlList['getModelByBrandId'] . "/brand_id/" . $brandId, $this->headers);
+        $response = $this->request->get($this->domain . $this->urlList['getModelListByBrandId'] . "/brand_id/" . $brandId, $this->headers);
         return $this->buildData($response);
     }
 
