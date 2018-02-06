@@ -78,6 +78,9 @@ var_dump($data);
 4. 产品
     - <a href="#searchProductByModel">通过型号搜索某个产品</a>
     - <a href="#getProduct">获取某个产品的详细信息</a>
+    - <a href="#getProductByBrandId">通过品牌获取产品信息列表</a>
+    - <a href="#getProductBySeriesId">通过系列获取产品信息列表</a>
+    - <a href="#getProductByModelId">通过型号获取产品信息列表</a>
     
 #### <a name="getTopCategory">获取顶级分类</a>
 调用代码
@@ -519,8 +522,8 @@ $client->searchProductByModel("L12",1);
 返回参数及参数说明参考<a href="#getTopAttribute">获取顶级属性列表</a>
 #### <a name="getProduct">获取某个产品的详细信息</a>
 ```php
-$client->searchProductByModel($model, $page);//型号名称，页码
-$client->searchProductByModel("L12",1);
+$client->getProduct($productId);//型号ID
+$client->getProduct(49729);
 ```
 ```json
 {
@@ -589,3 +592,123 @@ $client->searchProductByModel("L12",1);
 | attribute_type | string| 属性类型|
 | parent_id | string|父级属性id |
 
+- <a href="#searchProductByModel">通过型号搜索某个产品</a>
+- <a href="#getProduct">获取某个产品的详细信息</a>
+- <a href="#getProductByBrandId">通过品牌获取产品信息列表</a>
+- <a href="#getProductBySeriesId">通过系列获取产品信息列表</a>
+- <a href="#getProductByModelId">通过型号获取产品信息列表</a>
+
+
+#### <a name="getProductByBrandId">通过品牌获取产品信息列表</a>
+```php
+$client->getProductByBrandId($brandId);
+$client->getProductByBrandId(1);
+```
+```json
+{
+    "code": "200",
+    "errorNo": "",
+    "error": "",
+    "errorInfo": [],
+    "data": {
+        "list": [
+            {
+                "product_id": "926",
+                "category_id": "1",
+                "title": "艾米龙挑战者 08.1169.G.6.AW.98.6",
+                "brand_id": "10",
+                "series_id": "11",
+                "model_id": "2136",
+                "brand_name": "艾米龙",
+                "series_name": "挑战者",
+                "model_name": " 08.1169.G.6.AW.98.6",
+                "public_price": "11200.00",
+                "photo": "http://productimg.xbiao.com/101/240_360/3429014611429948.jpg",
+                "add_time": "2017-11-30 13:40:22"
+            }
+        ],
+        "total": "733",
+        "totalPage": "37",
+        "page": "3"
+    }
+}
+```
+返回参数及参数说明参考<a href="#searchProductByModel">通过型号搜索产品</a>
+
+
+#### <a name="getProductBySeriesId">通过系列获取产品信息列表</a>
+```php
+$client->getProductBySeriesId($seriesId);
+$client->getProductBySeriesId(2);
+```
+```json
+{
+    "code": "200",
+    "errorNo": "",
+    "error": "",
+    "errorInfo": [],
+    "data": {
+        "list": [
+            {
+                "product_id": "1",
+                "category_id": "1",
+                "title": "爱彼高级珠宝79418BC.ZZ.9188BC.01",
+                "brand_id": "1",
+                "series_id": "2",
+                "model_id": "1285",
+                "brand_name": "爱彼",
+                "series_name": "高级珠宝HAUTE JOAILLERIE系列",
+                "model_name": "79418BC.ZZ.9188BC.01",
+                "public_price": "5638000.00",
+                "photo": "http://productimg.xbiao.com/57/240_360/3781014690949321.jpg",
+                "add_time": "2017-11-30 13:38:20"
+            }
+        ],
+        "total": "733",
+        "totalPage": "37",
+        "page": "3"
+    }
+}
+```
+返回参数及参数说明参考<a href="#searchProductByModel">通过型号搜索产品</a>
+#### <a name="getProductByModelId">通过型号获取产品信息列表</a>
+```php
+$client->getProductByModelId($modelId);
+$client->getProductByModelId(2216);
+```
+```json
+{
+    "code": "200",
+    "errorNo": "",
+    "error": "",
+    "errorInfo": [],
+    "data": {
+        "product_id": "1006",
+        "category_id": "1",
+        "title": "艾米龙莱蒙15.1168.G42.6.8.68.2",
+        "brand_id": "10",
+        "series_id": "17",
+        "model_id": "2216",
+        "brand_name": "艾米龙",
+        "series_name": "莱蒙",
+        "model_name": "15.1168.G42.6.8.68.2",
+        "public_price": "18000.00",
+        "photo": "http://productimg.xbiao.com/101/240_360/3377714036832777.jpg",
+        "add_time": "2017-11-30 13:40:33",
+        "attribute_list": [
+            {
+                "product_attribute_id": "27447",
+                "product_id": "1006",
+                "attribute_id": "7",
+                "mark": "jixinleixing",
+                "attribute_name": "机芯类型",
+                "attribute_value": "8,8",
+                "attribute_value_name": "自动机械,自动机械",
+                "attribute_type": "select",
+                "parent_id": "0"
+            }
+        ]
+    }
+}
+```
+返回参数及参数说明参考<a href="#searchProductByModel">通过型号搜索产品</a>
