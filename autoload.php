@@ -11,5 +11,4 @@ function classLoader($class)
 }
 
 spl_autoload_register('classLoader');
-var_dump(__DIR__);
 require_once __DIR__ . '/src/Client.php';
