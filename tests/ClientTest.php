@@ -25,6 +25,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->testSearchModel();
         $this->testSearchProductByModel();
         $this->testGetProduct();
+        $this->testGetProductByBrandId();
+        $this->testGetProductBySeriesId();
+        $this->testGetProductByModelId();
     }
 
     public function testGetTopCategory()
@@ -139,6 +142,33 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testGetProduct()
     {
         $data = $this->client->getProduct('1');
+
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
+        $this->assertTrue(empty($this->client->error));
+
+    }
+
+    public function testGetProductByBrandId()
+    {
+        $data = $this->client->getProductByBrandId('1');
+
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
+        $this->assertTrue(empty($this->client->error));
+
+    }
+
+    public function testGetProductBySeriesId()
+    {
+        $data = $this->client->getProductBySeriesId('2');
+
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
+        $this->assertTrue(empty($this->client->error));
+
+    }
+
+    public function testGetProductByModelId()
+    {
+        $data = $this->client->getProductByModelId('1285');
 
         $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));

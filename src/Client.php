@@ -32,6 +32,9 @@ class Client
             'getChildAttribute'     => "/index/attribute/getChildAttribute",
             'searchProductByModel'  => "/index/product/searchProductByModel",
             'getProduct'            => "/index/product/getProductById",
+            'getProductByBrandId'   => "/index/product/getProductByBrandId",
+            'getProductBySeriesId'  => "/index/product/getProductBySeriesId",
+            'getProductByModelId'   => "/index/product/getProductByModelId",
         );
         $this->headers = array(
             "Content-Type" => "application/json",
@@ -73,7 +76,7 @@ class Client
             $this->error     = "请求失败";
             $this->errorNo   = "request_fail";
             $this->errorInfo = $response->body;
-            var_dump($this->errorInfo);
+            
             return false;
         }
 
@@ -249,6 +252,24 @@ class Client
     public function getProduct($productId = 0)
     {
         $response = $this->request->get($this->domain . $this->urlList['getProduct'] . "/product_id/" . $productId, $this->headers);
+        return $this->buildData($response);
+    }
+
+    public function getProductByBrandId($brandId = 0)
+    {
+        $response = $this->request->get($this->domain . $this->urlList['getProductByBrandId'] . "/brand_id/" . $brandId, $this->headers);
+        return $this->buildData($response);
+    }
+
+    public function getProductBySeriesId($seriesId = 0)
+    {
+        $response = $this->request->get($this->domain . $this->urlList['getProductBySeriesId'] . "/series_id/" . $seriesId, $this->headers);
+        return $this->buildData($response);
+    }
+
+    public function getProductByModelId($modelId = 0)
+    {
+        $response = $this->request->get($this->domain . $this->urlList['getProductByModelId'] . "/model_id/" . $modelId, $this->headers);
         return $this->buildData($response);
     }
 }
