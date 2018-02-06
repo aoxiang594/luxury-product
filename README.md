@@ -592,13 +592,6 @@ $client->getProduct(49729);
 | attribute_type | string| 属性类型|
 | parent_id | string|父级属性id |
 
-- <a href="#searchProductByModel">通过型号搜索某个产品</a>
-- <a href="#getProduct">获取某个产品的详细信息</a>
-- <a href="#getProductByBrandId">通过品牌获取产品信息列表</a>
-- <a href="#getProductBySeriesId">通过系列获取产品信息列表</a>
-- <a href="#getProductByModelId">通过型号获取产品信息列表</a>
-
-
 #### <a name="getProductByBrandId">通过品牌获取产品信息列表</a>
 ```php
 $client->getProductByBrandId($brandId);
@@ -628,8 +621,8 @@ $client->getProductByBrandId(1);
             }
         ],
         "total": "733",
-        "totalPage": "37",
-        "page": "3"
+        "totalPage": "1",
+        "page": "1"
     }
 }
 ```
@@ -665,8 +658,8 @@ $client->getProductBySeriesId(2);
             }
         ],
         "total": "733",
-        "totalPage": "37",
-        "page": "3"
+        "totalPage": "1",
+        "page": "1"
     }
 }
 ```
