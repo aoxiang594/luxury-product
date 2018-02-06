@@ -2,6 +2,7 @@
     "name": "aoxiang/luxury-product",
     "description": "Luxury Product List",
     "type": "library",
+    "version": "1.0.0",
     "require": {
         "php": ">=5.4.0",
         "rmccue/requests": "^1.7"
