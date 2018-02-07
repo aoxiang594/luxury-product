@@ -27,6 +27,7 @@ class Client
             'getSeriesList'         => "/index/brand/getSeriesByBrandId",
             'getModelList'          => "/index/brand/getModelBySeriesId",
             'getModelListByBrandId' => "/index/brand/getModelListByBrandId",
+            'getBrandById'          => "/index/brand/getBrandById",
             'searchBrandByName'     => "/index/brand/searchByName",
             'getTopAttribute'       => "/index/attribute/getTopAttributeByCategoryId",
             'getChildAttribute'     => "/index/attribute/getChildAttribute",
@@ -76,7 +77,7 @@ class Client
             $this->error     = "请求失败";
             $this->errorNo   = "request_fail";
             $this->errorInfo = $response->body;
-            
+
             return false;
         }
 
@@ -148,6 +149,24 @@ class Client
     public function getModelListByBrandId($brandId = 0)
     {
         $response = $this->request->get($this->domain . $this->urlList['getModelListByBrandId'] . "/brand_id/" . $brandId, $this->headers);
+        return $this->buildData($response);
+    }
+
+    public function getBrandById($brandId = 0)
+    {
+        $response = $this->request->get($this->domain . $this->urlList['getBrandById'] . "/brand_id/" . $brandId, $this->headers);
+        return $this->buildData($response);
+    }
+
+    public function getSeriesById($seriesId = 0)
+    {
+        $response = $this->request->get($this->domain . $this->urlList['getBrandById'] . "/brand_id/" . $seriesId, $this->headers);
+        return $this->buildData($response);
+    }
+
+    public function getModelById($modelId = 0)
+    {
+        $response = $this->request->get($this->domain . $this->urlList['getBrandById'] . "/brand_id/" . $modelId, $this->headers);
         return $this->buildData($response);
     }
 

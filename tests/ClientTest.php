@@ -112,6 +112,30 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testGetBrandById()
+    {
+        $data = $this->client->getBrandById('1');
+
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
+        $this->assertTrue(empty($this->client->error));
+    }
+
+    public function testGetSeriesById()
+    {
+        $data = $this->client->getSeriesById('1');
+
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
+        $this->assertTrue(empty($this->client->error));
+    }
+
+    public function testGetModelById()
+    {
+        $data = $this->client->getModelById('1');
+
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
+        $this->assertTrue(empty($this->client->error));
+    }
+
 
     public function testGetTopAttribute()
     {
