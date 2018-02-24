@@ -36,6 +36,7 @@ class Client
             'getProductByBrandId'   => "/index/product/getProductByBrandId",
             'getProductBySeriesId'  => "/index/product/getProductBySeriesId",
             'getProductByModelId'   => "/index/product/getProductByModelId",
+            'filterProduct'         => "/index/product/filterProduct",
         );
         $this->headers = array(
             "Content-Type" => "application/json",
@@ -289,6 +290,57 @@ class Client
     public function getProductByModelId($modelId = 0)
     {
         $response = $this->request->get($this->domain . $this->urlList['getProductByModelId'] . "/model_id/" . $modelId, $this->headers);
+        return $this->buildData($response);
+    }
+
+    /**
+     * filterProduct
+     * @param array $filterList
+     *      sex string|int|array
+     *      size string|int|array 尺寸
+     *      core_type string|int|array 机芯类型
+     *      min_price float 价格范围最低价
+     *      max_price float 价格范围最高价
+     *      material  array  表壳材质
+     *      watch_band array  表带材质
+     *      brand_id  string|int|array  品牌
+     * @param int $page
+     * @return bool|mixed
+     */
+    public function filterProduct($filterList = array(), $page = 1)
+    {
+        $data = array(
+            'page' => $page,
+        );
+        if (isset($filterList['sex'])) {
+            $data['sex'] = $filterList['sex'];
+        }
+        if (isset($filterList['size'])) {
+            $data['size'] = $filterList['size'];
+        }
+        if (isset($filterList['core_type'])) {
+            $data['core_type'] = $filterList['core_type'];
+        }
+        if (isset($filterList['min_price'])) {
+            $data['min_price'] = $filterList['min_price'];
+        }
+        if (isset($filterList['max_price'])) {
+            $data['max_price'] = $filterList['max_price'];
+        }
+        if (isset($filterList['material'])) {
+            $data['material'] = $filterList['material'];
+        }
+
+        if (isset($filterList['watch_band'])) {
+            $data['watch_band'] = $filterList['watch_band'];
+        }
+
+        if (isset($filterList['brand_id'])) {
+            $data['brand_id'] = $filterList['brand_id'];
+        }
+
+        $data     = json_encode($data);
+        $response = $this->request->post($this->domain . $this->urlList['filterProduct'], $this->headers, $data, $this->options);
         return $this->buildData($response);
     }
 }

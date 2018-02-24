@@ -28,6 +28,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->testGetProductByBrandId();
         $this->testGetProductBySeriesId();
         $this->testGetProductByModelId();
+        $this->testFilterProduct();
     }
 
     public function testGetTopCategory()
@@ -193,6 +194,25 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testGetProductByModelId()
     {
         $data = $this->client->getProductByModelId('1285');
+
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
+        $this->assertTrue(empty($this->client->error));
+
+    }
+
+    public function testFilterProduct()
+    {
+        $filterList = array(
+            'brand_id'   => array(1, 10),
+            'sex'        => array(1),
+            'size'       => array(35),
+            'core_type'  => array(1),
+            'min_price'  => 10000,
+            'max_price'  => 50000,
+            'material'   => array(26),
+            'watch_band' => array(70394, 70396)
+        );
+        $data       = $this->client->FilterProduct($filterList, 1);
 
         $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));

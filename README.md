@@ -81,6 +81,7 @@ var_dump($data);
     - <a href="#getProductByBrandId">通过品牌获取产品信息列表</a>
     - <a href="#getProductBySeriesId">通过系列获取产品信息列表</a>
     - <a href="#getProductByModelId">通过型号获取产品信息列表</a>
+    - <a href="#filterProduct">筛选产品</a>
     
 #### <a name="getTopCategory">获取顶级分类</a>
 调用代码
@@ -704,4 +705,34 @@ $client->getProductByModelId(2216);
     }
 }
 ```
+返回参数及参数说明参考<a href="#searchProductByModel">通过型号搜索产品</a>
+
+#### <a name="filteProduct">筛选产品</a>
+```php
+ $filterList = array(
+             'brand_id'   => array(1, 10),
+             'sex'        => array(1),
+             'size'       => array(25),
+             'core_type'  => array(1),
+             'min_price'  => 10000,
+             'max_price'  => 50000,
+             'material'   => array(26),
+             'watch_band' => array(70394, 70396)
+         );
+$client->filterProduct($filterList,$page);
+
+筛选参数说明，筛选内容全部都都是多选
+
+|键|类型|说明|
+|:-------|:-------|:-------|
+| brand_id | array| 筛选的品牌 |
+| sex | array| 性别|
+| size | array|尺寸 |
+| core_type | array| 机芯类型 |
+| material | array| 表壳材质 |
+| watch_band | array| 表带材质|
+| min_price | array| 价格范围最低价 |
+| max_price | array| 价格范围最高价 |
+
+
 返回参数及参数说明参考<a href="#searchProductByModel">通过型号搜索产品</a>
