@@ -720,6 +720,7 @@ $client->getProductByModelId(2216);
              'watch_band' => array(70394, 70396)
          );
 $client->filterProduct($filterList,$page);
+```
 
 筛选参数说明，筛选内容全部都都是多选
 
@@ -733,6 +734,7 @@ $client->filterProduct($filterList,$page);
 | watch_band | array| 表带材质|
 | min_price | array| 价格范围最低价 |
 | max_price | array| 价格范围最高价 |
+
 
 
 返回参数及参数说明参考<a href="#searchProductByModel">通过型号搜索产品</a>
