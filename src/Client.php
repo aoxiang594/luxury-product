@@ -304,6 +304,7 @@ class Client
      *      material  array  表壳材质
      *      watch_band array  表带材质
      *      brand_id  string|int|array  品牌
+     *      keyword string  搜索关键词
      * @param int $page
      * @return bool|mixed
      */
@@ -337,6 +338,9 @@ class Client
 
         if (isset($filterList['brand_id'])) {
             $data['brand_id'] = $filterList['brand_id'];
+        }
+        if (isset($filterList['keyword'])) {
+            $data['keyword'] = $filterList['keyword'];
         }
 
         $data     = json_encode($data);
