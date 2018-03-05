@@ -232,7 +232,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'material'   => array(26),
             'watch_band' => array(70394, 70396)
         );
-        $data       = $this->client->getProductIdList($filterList, 1);
+        $data       = $this->client->getProductIdList($filterList);
 
         $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
         $this->assertTrue(empty($this->client->error));

@@ -37,7 +37,7 @@ class Client
             'getProductBySeriesId'  => "/index/product/getProductBySeriesId",
             'getProductByModelId'   => "/index/product/getProductByModelId",
             'filterProduct'         => "/index/product/filterProduct",
-            'getProductIdList'         => "/index/product/getProductIdList",
+            'getProductIdList'      => "/index/product/getProductIdList",
         );
         $this->headers = array(
             "Content-Type" => "application/json",
@@ -57,11 +57,13 @@ class Client
      */
     protected function buildData($response)
     {
+
         if ($response->status_code == 200) {
 
             $body = json_decode($response->body, true);
 
             if (is_array($body)) {
+                $this->errorNo = $body['errorNo'];
                 if ($body['code'] == '200') {
                     return $body['data'];
                 } else {
@@ -70,12 +72,14 @@ class Client
                     return false;
                 }
             } else {
+                var_dump($response->body);
                 $this->error     = "获取数据失败";
                 $this->errorNo   = "data_parse_error";
-                $this->errorInfo = $response;
+                $this->errorInfo = $response->body;
                 return false;
             }
         } else {
+            //var_dump($response->body);
             $this->error     = "请求失败";
             $this->errorNo   = "request_fail";
             $this->errorInfo = $response->body;
@@ -379,7 +383,7 @@ class Client
         }
 
         if (isset($filterList['keyword'])) {
-            $data['keyword'] = $filterList['keyword'];
+            $where['keyword'] = $filterList['keyword'];
         }
 
         return $where;
