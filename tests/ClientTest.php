@@ -239,5 +239,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testGetRandProduct()
+    {
+        $data = $this->client->getRandProduct();
+
+        $this->assertEquals(is_array($data), true, "Error:" . $this->client->error . ",errorNo:" . $this->client->errorNo);
+        $this->assertTrue(empty($this->client->error));
+
+    }
 
 }

@@ -38,6 +38,7 @@ class Client
             'getProductByModelId'   => "/index/product/getProductByModelId",
             'filterProduct'         => "/index/product/filterProduct",
             'getProductIdList'      => "/index/product/getProductIdList",
+            'getRandProduct'        => "/index/product/getRandProduct",
         );
         $this->headers = array(
             "Content-Type" => "application/json",
@@ -387,6 +388,15 @@ class Client
         }
 
         return $where;
+    }
+
+
+    public function getRandProduct()
+    {
+        $data     = array();
+        $response = $this->request->get($this->domain . $this->urlList['getRandProduct'], $this->headers, $data, $this->options);
+        return $this->buildData($response);
+
     }
 
 
