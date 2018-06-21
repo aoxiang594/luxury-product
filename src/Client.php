@@ -15,7 +15,7 @@ class Client
     public $errorNo = "";
     public $errorInfo = [];
 
-    public function __construct($domain)
+    public function __construct($domain = '')
     {
         $this->domain = $domain;
         Requests::register_autoloader();
@@ -385,6 +385,9 @@ class Client
 
         if (isset($filterList['keyword'])) {
             $where['keyword'] = $filterList['keyword'];
+        }
+        if (isset($filterList['product_id_list']) && !empty($filterList['product_id_list'])) {
+            $where['product_id_list'] = $filterList['product_id_list'];
         }
 
         return $where;
